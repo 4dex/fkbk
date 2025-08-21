@@ -3,6 +3,7 @@ import 'package:endless_runner/audio/audio_controller.dart';
 import 'package:endless_runner/audio/sounds.dart';
 import 'package:endless_runner/flame_game/endless_runner.dart';
 import 'package:endless_runner/flame_game/game_screen.dart';
+import 'package:endless_runner/level_selection/levels.dart';
 import 'package:endless_runner/player_progress/persistence/memory_player_progress_persistence.dart';
 import 'package:endless_runner/player_progress/player_progress.dart';
 import 'package:endless_runner/settings/settings.dart';
@@ -49,6 +50,7 @@ void main() {
           number: 1,
           winScore: 3,
           canSpawnTall: false,
+          gameType: GameType.endlessRunner,
         ),
         playerProgress: PlayerProgress(
           store: MemoryOnlyPlayerProgressPersistence(),
