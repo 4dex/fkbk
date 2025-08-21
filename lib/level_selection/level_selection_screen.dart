@@ -70,24 +70,41 @@ class LevelSelectionScreen extends StatelessWidget {
                         level.number.toString(),
                         style: levelTextStyle,
                       ),
-                      title: Row(
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Level #${level.number}',
-                            style: levelTextStyle,
+                          Row(
+                            children: [
+                              Text(
+                                'Level #${level.number}',
+                                style: levelTextStyle,
+                              ),
+                              if (playerProgress.levels.length <
+                                  level.number - 1) ...[
+                                const SizedBox(width: 10),
+                                const Icon(Icons.lock, size: 20),
+                              ] else if (playerProgress.levels.length >=
+                                  level.number) ...[
+                                const SizedBox(width: 50),
+                                Text(
+                                  '${playerProgress.levels[level.number - 1]}s',
+                                  style: levelTextStyle,
+                                ),
+                              ],
+                            ],
                           ),
-                          if (playerProgress.levels.length <
-                              level.number - 1) ...[
-                            const SizedBox(width: 10),
-                            const Icon(Icons.lock, size: 20),
-                          ] else if (playerProgress.levels.length >=
-                              level.number) ...[
-                            const SizedBox(width: 50),
-                            Text(
-                              '${playerProgress.levels[level.number - 1]}s',
-                              style: levelTextStyle,
+                          const SizedBox(height: 4),
+                          Text(
+                            level.gameType == GameType.hurdleJumping
+                                ? 'Hurdle Jumping - Jump over ${level.winScore} hurdles'
+                                : 'Endless Runner - Collect ${level.winScore} embers',
+                            style: levelTextStyle?.copyWith(
+                              fontSize: 12,
+                              color: level.gameType == GameType.hurdleJumping
+                                  ? Colors.red[300]
+                                  : Colors.blue[300],
                             ),
-                          ],
+                          ),
                         ],
                       ),
                     )
