@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../audio/audio_controller.dart';
 import '../level_selection/levels.dart';
 import '../player_progress/player_progress.dart';
-import 'components/background.dart';
+import 'components/red_background.dart';
 import 'hurdle_world.dart';
 
 /// The [HurdleRunner] is the main game class for the hurdle jumping game.
@@ -28,8 +28,8 @@ class HurdleRunner extends FlameGame<HurdleWorld> with HasCollisionDetection {
 
   @override
   Future<void> onLoad() async {
-    // Add the parallax background
-    camera.backdrop.add(Background(speed: world.speed));
+    // Add the red background for hurdle jumping
+    camera.backdrop.add(RedBackground());
 
     // Set up the score text renderer
     final textRenderer = TextPaint(
